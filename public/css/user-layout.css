@@ -1,0 +1,56 @@
+/* Shared user layout styles */
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #111;
+}
+
+.page-wrap {
+  padding: 18px;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 18px;
+  background:#fff;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand-logo{
+  height: 28px;
+  width:auto;
+}
+
+.navlinks{
+  display:flex;
+  gap:40px;
+  font-weight:700;
+}
+.navlinks a{
+  text-decoration:none;
+  color:#2b1b6f; /* deep purple vibe */
+}
+.navlinks a.active{
+  text-decoration:underline;
+}
+
+.profile-icon .circle-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:2px solid #0a7a0a;
+}
+.sr-only{ position:absolute; left:-9999px; }

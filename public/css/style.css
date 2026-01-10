@@ -1,0 +1,577 @@
+/* =========================
+   [GLOBAL] Reset + variables
+   ========================= */
+:root{
+  --green:#159a2a;          /* Accent green in screenshot */
+  --green-soft:#cfe8c9;     /* Big soft circle background */
+  --purple:#2a1670;         /* Deep purple used in headings/buttons */
+  --purple-soft:#6a56c6;    /* Corner gradients/soft purple */
+  --orange:#f07a1c;         /* Orange accent */
+  --text:#111;              /* Main text color */
+  --bg:#ffffff;             /* Page background */
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; } /* Reset */
+html{ scroll-behavior:smooth; } /* Smooth anchor scroll */
+body{
+  font-family:"Poppins", system-ui, Arial, sans-serif; /* Font */
+  background:var(--bg); /* Background */
+  color:var(--text); /* Text color */
+}
+
+
+/* =========================
+   [REUSABLE] Buttons
+   ========================= */
+.btn{
+  display:inline-flex;               /* Inline button */
+  align-items:center;                /* Center text */
+  justify-content:center;            /* Center text */
+  text-decoration:none;              /* Remove underline */
+  font-weight:700;                   /* Bold */
+  border-radius:10px;                /* Rounded corners */
+  padding:10px 18px;                 /* Size */
+  transition:transform .12s ease, opacity .12s ease; /* Hover */
+}
+.btn:active{ transform:scale(0.98); } /* Click feedback */
+.btn:hover{ opacity:.92; }            /* Hover fade */
+
+.btn--primary{
+  background:var(--purple); /* Purple CTA like screenshot */
+  color:#fff;               /* White text */
+  min-width:150px;          /* Similar width */
+}
+
+.btn--login{
+  background:var(--orange); /* Orange login button */
+  color:#fff;               /* White text */
+  padding:8px 18px;         /* Smaller than CTA */
+  border-radius:8px;        /* Rounded */
+}
+
+/* =========================
+   [TOPBAR] Navigation
+   ========================= */
+.topbar{
+  width:100%;                      /* Full width */
+  display:flex;                    /* Row layout */
+  align-items:center;              /* Vertical center */
+  justify-content:space-between;   /* Space between */
+  padding:16px 28px;               /* Spacing like screenshot */
+  background:#fff;                 /* White bar */
+}
+
+.web{
+  display:flex; align-items:center; gap:10px; /* Logo alignment */
+}
+.web__logo{
+  height:70px; /* Adjust if your logo is bigger/smaller */
+  width:auto;  /* Keep aspect ratio */
+}
+
+.navlinks{
+  display:flex; gap:26px; /* Space between links */
+}
+.navlinks__item{
+  text-decoration:none;       /* No underline */
+  font-weight:600;            /* Bold-ish */
+  color:#1a1a1a;              /* Dark link */
+}
+.navlinks__item:nth-child(1){ color:var(--green); } /* Home link green */
+.navlinks__item:nth-child(2){ color:var(--purple); } /* About link purple */
+.navlinks__item:nth-child(3){ color:#1a1a1a; }       /* Contact link black */
+
+.navlinks__item.active{
+  position:relative; /* For little marker line */
+}
+.navlinks__item.active::after{
+  content:"";                /* Underline marker */
+  position:absolute;         /* Positioned under */
+  left:0; right:0; bottom:-8px;
+  height:3px;                /* Thickness */
+  background:currentColor;   /* Same color as link */
+  border-radius:999px;       /* Rounded */
+}
+
+/* =========================
+   [SECTIONS] Spacing
+   ========================= */
+.section{
+  width:100%;
+  padding:34px 28px; /* Consistent padding */
+}
+
+/* =========================
+   [HERO/HOME] Layout
+   ========================= */
+.section--hero{
+  padding-top:10px; /* Closer to top like screenshot */
+}
+.hero{
+  max-width:1180px;             /* Content width */
+  margin:0 auto;                /* Center */
+  display:grid;                 /* Two columns */
+  grid-template-columns: 1.15fr 1fr; /* Left image bigger */
+  gap:30px;                     /* Space between columns */
+  align-items:center;           /* Vertical alignment */
+}
+
+.heroRing{
+  width:min(520px, 92vw);          /* Overall size */
+  aspect-ratio:1 / 1;              /* Perfect circle */
+  border-radius:50%;               /* Circle */
+  background:#95e68d;              /* Soft green ring */
+  display:flex;                    /* Center inner circle */
+  align-items:center;
+  justify-content:center;
+}
+
+/* White inner circle */
+.heroRing__inner{
+  width:73%;                       /* Controls ring thickness */
+  height:73%;
+  border-radius:50%;
+  background:#ffffff;              /* White center */
+  display:flex;                    /* Center the image */
+  align-items:center;
+  justify-content:center;
+  overflow:visible;                /* Let image breathe (like screenshot) */
+}
+
+/* Illustration */
+.heroRing__img{
+  width:100%;                      /* Slightly larger than inner circle */
+  height:auto;
+  transform:translateY(6px);       /* Push a bit down like your image */
+  user-select:none;
+  pointer-events:none;
+}
+
+.heroCircle__img{
+  width:92%;  /* Big image inside circle */
+  height:auto;
+}
+
+.logo__right img{
+  width:350px;        /* 👈 change this to resize */
+  height:auto;        /* keeps aspect ratio */
+}
+
+/* [HERO RIGHT] */
+.heroMark{ margin-bottom:12px; } /* Space under mark */
+.heroMark__img{ height:26px; width:auto; } /* Mark size */
+
+.heroTitle{
+  font-size:46px;        /* Big headline */
+  line-height:1.08;      /* Tight lines */
+  letter-spacing:.2px;   /* Slight spacing */
+  margin-bottom:14px;    /* Space */
+}
+.heroText{
+  font-size:14px;        /* Small paragraph */
+  line-height:1.6;       /* Readable */
+  max-width:420px;       /* Like screenshot */
+  margin-bottom:10px;    /* Space */
+}
+
+
+/* [ACCENT WORD COLORS] */
+.accent--orange{ color:var(--orange); }
+.accent--purple{ color:var(--purple); }
+.accent--green{ color:var(--green); }
+
+/* =========================
+   [ABOUT] LAYOUT
+   ========================= */
+
+.aboutSection{
+  width:100%;
+}
+
+/* Blue background (whole section) */
+.aboutBg{
+  background:linear-gradient(180deg, #2a1670 0%, #5a3ad8 100%);
+  padding:60px 0;                /* space top/bottom like screenshot */
+  position:relative;
+  overflow:hidden;
+}
+
+
+/* top-left curve */
+.aboutBg::before{
+  top:-210px;
+  left:-210px;
+  border-radius:0 0 420px 0;
+}
+
+/* bottom-right curve */
+.aboutBg::after{
+  bottom:-210px;
+  right:-210px;
+  border-radius:420px 0 0 0;
+}
+
+/* Center white oval container */
+.aboutCircleWrap{
+  display:flex;
+  justify-content:center;
+  position: relative;
+}
+
+/* WHITE OVAL (NOT perfect circle) */
+.aboutCircle{
+  width:min(1100px, 92vw);       /* wide like design */
+  height:590px;                  /* fixed height to keep oval look */
+  background:#ffffff;
+  border-radius:9999px;          /* makes it oval */
+  padding:28px 80px 26px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* Top centered logo */
+.aboutTopLogo{
+  margin-bottom:6px;
+}
+.aboutTopLogo img{
+  height:90px;                   /* logo size */
+  width:auto;
+}
+
+/* 2 columns */
+.aboutContent{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  margin-top:6px;
+}
+
+/* centered text blocks like screenshot */
+.aboutLeft,
+.aboutRight{
+  text-align:center;
+  font-size:12px;
+  line-height:1.65;
+  color:#000000;
+}
+
+.aboutLeft p,
+.aboutRight p{
+  margin-bottom:18px;
+}
+
+/* Titles */
+.aboutTitle{
+  font-size:25px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.aboutTitle--orange{ color:#f07a1c; }  /* ABOUT US */
+.aboutTitle--purple{ color:#2a1670; }  /* mission/vision */
+
+.aboutTitle--spaced{
+  margin-top:18px;
+}
+
+/* Button centered */
+.aboutButtonWrap{
+  margin-top:10px;
+}
+.aboutBtn{
+  background:#2a1670;
+  color:#fff;
+  text-decoration:none;
+  padding:10px 34px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:14px;
+}
+
+/* Mobile: stack columns, keep nice */
+@media (max-width:900px){
+  .aboutCircle{
+    width:min(95vw, 700px);
+    height:auto;                 /* allow content to flow on mobile */
+    border-radius:40px;
+    padding:22px 18px;
+  }
+  .aboutContent{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+}
+
+
+/* =========================
+   [CONTACT] Layout
+   ========================= */
+.section--contact{
+  padding:50px 28px 0; /* Footer bar sits at bottom */
+}
+.contactWrap{
+  max-width:1180px; margin:0 auto;
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap:28px;
+  align-items:center;
+}
+
+.contactRing{
+  width:min(520px, 92vw);     /* overall size */
+  aspect-ratio:1 / 1;         /* perfect circle */
+  border-radius:50%;
+  background:#c7b1ce;         /* green ring */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* illustration */
+.contactRing__img{
+  width:118%;                 /* image size inside circle */
+  height:auto;
+  transform:translateY(6px);  /* small push down */
+  user-select:none;
+  pointer-events:none;
+}
+
+/* white inner circle */
+.contactRing__inner{
+  width:73%;                  /* smaller = thicker ring */
+  height:73%;
+  border-radius:50%;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+}
+
+/* Right content */
+.contactMark__img{ height:90px; width:auto; margin-bottom:10px; }
+
+.contactTitle{
+  font-size:52px;
+  color:var(--orange);
+  font-weight:800;
+  line-height:1;
+  margin-bottom:18px;
+}
+
+.contactText{
+  font-size:14px;
+  line-height:1.6;
+  max-width:520px;
+  margin-bottom:18px;
+}
+
+/* Info list */
+.contactInfo{
+  margin-bottom:18px;
+}
+.contactLine{
+  font-size:14px;
+  margin-bottom:8px;
+}
+.contactLine--spaced{ margin-top:10px; }
+
+.contactLabel{
+  font-weight:800;
+  color:var(--purple);
+  margin-right:6px;
+}
+.contactValue{ color:#111; }
+
+/* Tagline bottom */
+.contactTagline{
+  margin-top:18px;
+  font-weight:700;
+  font-size:14px;
+}
+
+/* Footer green bar */
+.footerBar{
+  margin-top:34px;
+  background:var(--green);
+  padding:10px 18px;
+  text-align:center;
+}
+.footerBar__text{
+  color:#fff;
+  font-size:12px;
+}
+
+/* =========================
+   [RESPONSIVE] Mobile layout
+   ========================= */
+@media (max-width: 900px){
+  .hero, .contactWrap{ grid-template-columns:1fr; } /* Stack columns */
+  .heroTitle{ font-size:38px; } /* Slightly smaller */
+  .contactTitle{ font-size:44px; } /* Slightly smaller */
+  .navlinks{ display:none; } /* Simple mobile: hide links */
+  .aboutCircle{ border-radius:42px; } /* On small screens, make it a rounded card */
+  .aboutGrid{ grid-template-columns:1fr; }
+}
+
+/* =========================
+   AUTH MODAL (Login/Register)
+   ========================= */
+
+/* Modal wrapper */
+.authModal{
+  position:fixed;
+  inset:0;
+  display:none;                 /* hidden by default */
+  z-index:9999;
+}
+
+/* Show modal */
+.authModal.is-open{
+  display:block;
+}
+
+/* Overlay background */
+.authModal__overlay{
+  position:absolute;
+  inset:0;
+  /* default = USER (blue/purple) */
+  background:radial-gradient(circle at 30% 20%, #e8e2f5 0%, #4f3aa6 55%, #1c0b5a 100%);
+  pointer-events:auto;   /* overlay blocks clicks */
+}
+
+/* Admin bg (orange) - applied via class on .authModal */
+.authModal.is-admin .authModal__overlay{
+  background:radial-gradient(circle at 30% 20%, #ffe9dc 0%, #ff9d6a 55%, #f16a1d 100%);
+}
+
+/* White card */
+.authCard{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:min(420px, 92vw);
+  background:#fff;
+  border-radius:10px;
+  padding:28px 38px 22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+/* Logo center */
+.authLogo{
+  display:flex;
+  justify-content:center;
+  margin-bottom:6px;
+}
+.authLogo__img{
+  height:75px;          /* adjust logo size here */
+  width:auto;
+}
+
+/* Tagline */
+.authTagline{
+  text-align:center;
+  font-size:15px;
+  color:#444;
+  margin-bottom:14px;
+}
+
+/* Forms */
+.authForm{
+  display:none;
+}
+.authForm.is-active{
+  display:block;
+}
+
+/* Field */
+.authField{
+  display:block;
+  margin-bottom:14px;
+}
+.authField__label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#111;
+}
+.authField__input{
+  width:100%;
+  height:34px;
+  border:1px solid #888;
+  border-radius:8px;
+  padding:0 12px;
+  outline:none;
+  font-size:13px;
+}
+.authField__input:focus{
+  border-color:#2a1670;
+}
+
+/* Admin checkbox */
+.authCheck{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:#111;
+  margin:2px 0 14px;
+}
+.authCheck input{
+  transform:scale(0.9);
+}
+
+/* Buttons */
+.authBtn{
+  width:220px;
+  height:34px;
+  display:block;
+  margin:10px auto 8px;
+  border:none;
+  border-radius:6px;
+  font-weight:700;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* Login button = purple */
+.authBtn--login{
+  background:#1c0b5a;
+}
+
+/* Register button = green */
+.authBtn--register{
+  background:#0f8a00;
+}
+
+/* Switch text */
+.authSwitch{
+  text-align:center;
+  font-size:11px;
+  color:#111;
+  margin-top:6px;
+}
+.authSwitch a{
+  color:#2a1670;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* Close button (optional) */
+.authClose{
+  position:absolute;
+  top:10px;
+  right:12px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  font-size:16px;
+  color:#444;
+}
+
+
+

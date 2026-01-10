@@ -1,0 +1,153 @@
+
+
+.profile-page{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* header row: left card + right orange curve panel */
+.profile-header-row{
+  display:flex;
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* White user card */
+.profile-card{
+  flex: 1 1 auto;
+  background:#fff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.08);
+  min-height: 150px;
+}
+
+.avatar-wrap{
+  display:flex;
+  gap: 18px;
+  align-items:center;
+}
+
+.avatar-circle{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #0a8a0a;
+}
+
+.user-name{
+  margin: 0 0 6px 0;
+  color: #0a8a0a;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.user-handle{
+  color: #444;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.muted{
+  color:#8b8b8b;
+  font-size: 12px;
+}
+
+/* Orange curve panel */
+.profile-actions-panel{
+  width: 260px;
+  border-radius: 10px;
+  background: radial-gradient(circle at left, transparent 56%, rgba(0,0,0,0) 57%),
+              linear-gradient(135deg, #ff6a00, #b94a00);
+  position: relative;
+  overflow:hidden;
+}
+
+/* make the “curve” feel: add a big white curve cut-out */
+.profile-actions-panel::before{
+  content:"";
+  position:absolute;
+  left:-120px;
+  top:-80px;
+  width: 340px;
+  height: 340px;
+  background:#fff;
+  border-radius: 50%;
+}
+
+/* buttons sit on top */
+.action-buttons{
+  position: absolute;
+  right: 22px;
+  top: 55px;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1;
+}
+
+.btn{
+  border:none;
+  padding: 7px 16px;
+  border-radius: 14px;
+  color:#fff;
+  font-weight: 700;
+  cursor:pointer;
+  width: 140px;
+}
+
+.btn-logout{ background:#0a8a0a; }
+.btn-delete{ background:#2b1b6f; }
+
+/* Activities section */
+.activities-card{
+  margin-top: 18px;
+  background:#fff;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.08);
+}
+
+.activities-title{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color:#2b1b6f;
+  margin-bottom: 10px;
+}
+.activities-title h2{
+  margin:0;
+  font-size: 14px;
+  letter-spacing: .5px;
+}
+
+.activities-list{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.activity-item{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  background:#1f0b5f;
+  color:#fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.activity-badge{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background:#fff;
+  color:#1f0b5f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 800;
+}
+.activity-text{
+  font-size: 14px;
+}
